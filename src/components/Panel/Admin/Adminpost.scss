@@ -1,0 +1,65 @@
+.form {
+  display: flex;
+  justify-content: center;
+
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  .fromcompo {
+    display: flex;
+    gap: 100px;
+    background-color: #bf0017;
+    border-radius: 20px;
+    padding: 20px;
+    .fform {
+      .card {
+        .fileup {
+          background-color: white;
+          border-color: transparent;
+          border-radius: 20px;
+          height: 30px;
+          width: 150px;
+          margin: auto;
+          text-align: center;
+          padding-left: 20px;
+        }
+        button {
+          background-color: white;
+          border-color: transparent;
+          border-radius: 20px;
+          height: 30px;
+          width: 150px;
+          margin: auto;
+          text-align: center;
+        }
+      }
+    }
+    .secform {
+      display: grid;
+      gap: 30px;
+      input {
+        width: 300px;
+        height: 30px;
+        border-radius: 10px;
+        border-color: transparent;
+        outline: none;
+      }
+      button {
+        background-color: white;
+        border-color: transparent;
+        border-radius: 20px;
+        height: 30px;
+        width: 150px;
+        margin: auto;
+      }
+      .desk {
+        width: 300px;
+        // height: 30px;
+        border-radius: 10px;
+        border-color: transparent;
+        outline: none;
+      }
+    }
+  }
+}

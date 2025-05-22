@@ -1,0 +1,135 @@
+.headercompo {
+  display: flex;
+  padding: 20px;
+  background: #bf0017;
+  // gap: 30%;
+  gap: 20px;
+  .headercompo__logo {
+    img {
+      width: 200px;
+      border-radius: 30px;
+      justify-content: center;
+      align-items: center;
+    }
+    @media (max-width: 850px) {
+      img {
+        width: 150px;
+      }
+    }
+
+    p {
+      color: white;
+      margin: 0px;
+    }
+  }
+
+  .headercompo__nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    font-size: 20px;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    // color: black;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    a:hover {
+      color: rgb(250, 61, 61);
+    }
+    // text-decoration: none;
+    // justify-content: space-between;
+    // width: 100%;
+  }
+
+  .timing {
+    color: white;
+    // padding-right: 20px;
+    p {
+      margin: 0px;
+    }
+  }
+  .wethdetaila {
+    display: none;
+  }
+
+  .wethdetail {
+    .weathercontent {
+      display: flex;
+      p {
+        margin: 0px;
+        color: white;
+      }
+      img {
+        width: 50px;
+      }
+    }
+  }
+
+  @media (max-width: 850px) {
+    .timing {
+      display: none;
+    }
+  }
+  .feat {
+    display: grid;
+    p {
+      color: white;
+      margin: 0px;
+    }
+  }
+  @media (max-width: 750px) {
+    .feat {
+      display: none;
+    }
+  }
+}
+@media (max-width: 2000px) {
+  .headercompo {
+    .headercompo__logo {
+      .timinga {
+        display: none;
+      }
+    }
+  }
+}
+@media (max-width: 750px) {
+  .headercompo {
+    display: grid;
+    justify-content: center;
+    margin: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    .wethdetail {
+      display: none;
+    }
+    .headercompo__logo {
+      display: flex;
+      justify-content: space-between;
+      .timinga {
+        display: block;
+        p {
+          font-size: 10px;
+        }
+      }
+
+      .wethdetaila {
+        display: grid;
+        .weathercontent {
+          display: flex;
+          p {
+            margin: 0px;
+            font-size: 10px;
+          }
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+}

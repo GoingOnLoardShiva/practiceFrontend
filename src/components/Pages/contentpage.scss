@@ -1,0 +1,69 @@
+.pagecontnent {
+  display: flex;
+  justify-content: center;
+  color: black;
+  background-color: rgb(233, 230, 230);
+  padding: 20px;
+  .page-deatails {
+    // display: flex;
+    gap: 20px;
+    width: 600px;
+
+    .all-contnet {
+      display: flex;
+      justify-content: space-between;
+      background-color: rgb(209, 207, 207);
+      padding: 5px;
+      align-items: center;
+      border-radius: 30px;
+
+      .page-aurthor {
+        margin: 0px;
+        display: flex;
+        gap: 20px;
+        .auth-img {
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 30px;
+            align-items: center;
+            align-content: center;
+          }
+        }
+        .auth-detal {
+          align-items: center;
+          align-content: center;
+          p {
+            margin: 0px;
+            // display: none;
+          }
+          .authname {
+            font-size: 20px;
+          }
+          .autdat {
+            font-size: 10px;
+          }
+        }
+      }
+      .menu-button {
+        margin-bottom: 10px;
+        li {
+          height: 8px;
+          border: 0px;
+          margin: auto;
+        }
+      }
+    }
+  }
+  .page-contnet-detail {
+    margin-top: 20px;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    img {
+      border-radius: 30px;
+      width: 400px;
+      margin: auto;
+    }
+  }
+}
