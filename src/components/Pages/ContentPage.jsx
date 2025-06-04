@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-
+import "primeicons/primeicons.css";
 import { useParams } from "react-router-dom";
 import "./contentpage.scss";
 import axios from "axios";
 import moment from "moment";
 
+
 const ContentPage = () => {
   const url = process.env.REACT_APP_HOST_URL;
   const key = process.env.REACT_APP_API;
+
+
   const { _id } = useParams();
   const [rcData, setRcData] = useState([]);
   const formatDate = (date) => {
@@ -24,7 +27,7 @@ const ContentPage = () => {
     });
     if (idSend.status === 200) {
       setRcData(idSend.data.sendid);
-      console.log(idSend);
+      // console.log(idSend);
     }
   };
   return (
@@ -42,11 +45,7 @@ const ContentPage = () => {
                   <p className="autdat">{formatDate(item.postdate)}</p>
                 </div>
               </div>
-              <div className="menu-button">
-                <li></li>
-                <li></li>
-                <li></li>
-              </div>
+              <div className="menu-button pi pi-ellipsis-v"></div>
             </div>
             <div className="page-contnet-detail">
               <div className="pagefirstcont">
@@ -56,6 +55,7 @@ const ContentPage = () => {
                 <p>{item.description}</p>
               </div>
             </div>
+
           </div>
         </div>
       ))}

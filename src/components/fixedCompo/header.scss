@@ -111,6 +111,7 @@
       justify-content: space-between;
       .timinga {
         display: block;
+        padding-top: 10px;
         p {
           font-size: 10px;
         }
@@ -118,6 +119,7 @@
 
       .wethdetaila {
         display: grid;
+        padding-top: 10px;
         .weathercontent {
           display: flex;
           p {
@@ -131,5 +133,16 @@
         }
       }
     }
+  }
+}
+@media (max-width: 550px) {
+  .headercompo {
+    .headercompo__nav{
+      a{
+        font-size: 15px;
+        // display: none;
+      }
+    }
+
   }
 }

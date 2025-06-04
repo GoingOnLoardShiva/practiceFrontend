@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Adminpost.scss";
 import { FileUpload } from "primereact/fileupload";
 import { Button } from "primereact/button";
@@ -10,6 +10,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { redirect } from "react-router-dom";
+import { account } from "../../../appwrite";
+import Cookie from "js-cookie";
 // import { FileUpload } from 'primereact/fileupload';
 
 // import { Input} from "primereact/input";
@@ -17,9 +19,43 @@ import { redirect } from "react-router-dom";
 const AdminPost = () => {
   const url = process.env.REACT_APP_HOST_URL;
   const apikey = process.env.REACT_APP_API;
+  const [gituser, setgitUser] = useState(account);
   const [rdimg, setimage] = useState([]);
   const [isCopied, setIsCopied] = useState(false);
-  const nevigate = useNavigate()
+  const nevigate = useNavigate();
+  const myString = JSON.stringify(gituser)
+
+  // const gitemail = myString
+
+
+  useEffect(() => {
+    const findAdmin = async () => {
+      const accountData = await account
+        .get()
+        .then(setgitUser)
+        .catch(console.error);
+        Cookie.set(account)
+      const adminf = await axios.post(
+        url + "/admifinder",
+        {
+          gituser,
+        },
+        {
+          headers: {
+            "x-api-key": apikey,
+          },
+        }
+      );
+      if (adminf.status === 200) {
+        
+        const sessionId = localStorage.getItem("account");
+        alert(sessionId);
+        
+        // nevigate("/");
+      }
+    };
+    findAdmin();
+  }, []);
 
   const copyToClipboard = async () => {
     try {
@@ -79,7 +115,7 @@ const AdminPost = () => {
       description: "",
       Aurthor: "",
       File: "",
-      imglink:"",
+      imglink: "",
     },
     validationSchema,
     onSubmit: async (values) => {
@@ -95,7 +131,7 @@ const AdminPost = () => {
           },
         }
       );
-      if(resp.status === 200){
+      if (resp.status === 200) {
         nevigate(0);
       }
     },
@@ -145,12 +181,22 @@ const AdminPost = () => {
                 Download
               </Button> */}
               <Button
-                className="pi pi-check"
+                className="copy pi pi-check"
                 onClick={copyToClipboard}
                 disabled={isCopied}
               >
                 {isCopied ? "Link Copied!" : "Copy Link" || ""}
               </Button>
+              <div className="gituser">
+                {gituser ? (
+                  <div className="git-detail">
+                    <h1>Welcome, {gituser.name || gituser.email}!</h1>,
+                    <img src={gituser.img} alt="" />
+                  </div>
+                ) : (
+                  <p>Loading user info...</p>
+                )}
+              </div>
             </div>
           </div>
           <div className="secform">

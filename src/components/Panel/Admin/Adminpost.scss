@@ -33,6 +33,10 @@
           margin: auto;
           text-align: center;
         }
+        .copy{
+          margin: auto;
+          display: flex;
+        }
       }
     }
     .secform {
@@ -61,5 +65,11 @@
         outline: none;
       }
     }
+  }
+  @media (max-width:500px) {
+    .fromcompo{
+      display: grid;
+    }
+    
   }
 }

@@ -14,6 +14,7 @@ const Landing = () => {
   useEffect(() => {
     recivedata();
   }, []);
+  
   const recivedata = async () => {
     const response = await axios.get(url + "/blogrecive", {
       headers: { "access-key": key },

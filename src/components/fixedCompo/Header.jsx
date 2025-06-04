@@ -9,7 +9,7 @@ const Header = () => {
   const [currentTime, setCurrentTime] = useState("");
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
-  const apiKey = "7bb33e5d4a984a29928104303252205";
+  const apiKey = "b87f80414b884bc795470321252305";
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -98,9 +98,9 @@ const Header = () => {
         </div>
         <div className="headercompo__nav">
           <a href="/">Home</a>
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="AdminPost">Contact</a>
+          <a href="About">About</a>
+          {/* <a href="">Services</a> */}
+          <a href="Services">Contact</a>
 
           {/* <Link to={"AdminPost"}>hiii</Link> */}
         </div>
