@@ -5,31 +5,52 @@ import "./contentpage.scss";
 import axios from "axios";
 import moment from "moment";
 
-
 const ContentPage = () => {
   const url = process.env.REACT_APP_HOST_URL;
   const key = process.env.REACT_APP_API;
 
-
   const { _id } = useParams();
   const [rcData, setRcData] = useState([]);
+  // const [viewsa, setViews] = useState();
   const formatDate = (date) => {
     return moment(date).format("DD-MMMM-YYYY").toUpperCase();
   };
 
   useEffect(() => {
-    sendingmethod();
-  }, []);
+    const sendingmethod = async () => {
+      const idSend = await axios.post(url + "/sendId" + _id, {
+        headers: { "access-key": key },
+      });
+      if (idSend.status === 200) {
+        setRcData(idSend.data.sendid);
+        // console.log(idSend);
+      }
+    };
+    const countView = async () => {
+      const send = await axios.get(url + "/postview" + _id, {
+        headers: { "access-key": key },
+      });
+      if (send.status === 200) {
+        // alert("hii")
+        // setViews(send.data.views);
+        // console.log(viewsa);
+      }
+    };
 
-  const sendingmethod = async () => {
-    const idSend = await axios.post(url + "/sendId" + _id, {
-      headers: { "access-key": key },
-    });
-    if (idSend.status === 200) {
-      setRcData(idSend.data.sendid);
-      // console.log(idSend);
-    }
-  };
+    sendingmethod();
+    countView();
+  }, [_id]);
+
+  // const countView = async () => {
+  //   const views = await axios.get(url + '/UserpostViews', _id,{
+  //     headers: { "access-key": key },
+  //   })
+  //   if(views.status === 200){
+  //     alert("views count")
+  //     setViews(views.data)
+  //   }
+  // };
+
   return (
     <div>
       {rcData.map((item) => (
@@ -43,6 +64,7 @@ const ContentPage = () => {
                 <div className="auth-detal">
                   <p className="authname">{item.Aurthor}</p>
                   <p className="autdat">{formatDate(item.postdate)}</p>
+                  {/* <p className="autdat">{viewsa.views}</p> */}
                 </div>
               </div>
               <div className="menu-button pi pi-ellipsis-v"></div>
@@ -55,7 +77,6 @@ const ContentPage = () => {
                 <p>{item.description}</p>
               </div>
             </div>
-
           </div>
         </div>
       ))}

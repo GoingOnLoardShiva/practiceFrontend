@@ -101,8 +101,9 @@ const Header = () => {
           <a href="About">About</a>
           {/* <a href="">Services</a> */}
           <a href="Services">Contact</a>
+          {/* <a href="Services">Contact</a> */}
 
-          {/* <Link to={"AdminPost"}>hiii</Link> */}
+          <Link to={"AdminPost"}>hiii</Link>
         </div>
         <div className="timing">
           <p>{currentDate}</p>

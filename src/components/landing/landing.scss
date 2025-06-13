@@ -1,7 +1,7 @@
 .landingpage {
   padding-top: 40px;
   padding-bottom: 40px;
-  background: #f5f5f7;
+  // background: #f5f5f7;
   //   gap: 0px;
   top: 0;
   left: 0;
@@ -10,6 +10,7 @@
   align-items: center;
   margin: auto;
   align-content: center;
+  padding-top: 150px;
   .ladingcontent {
     display: grid;
     gap: 30px;
@@ -17,6 +18,7 @@
 
     .landdiv {
       width: 250px;
+      
 
       .middlecontnet {
         display: flex;
