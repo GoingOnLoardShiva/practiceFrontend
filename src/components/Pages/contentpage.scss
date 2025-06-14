@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   color: black;
-  background-color: rgb(233, 230, 230);
-  padding: 20px;
+  background-color: rgb(255, 255, 255);
+  padding-top: 150px;
   .page-deatails {
     // display: flex;
     gap: 20px;
@@ -12,7 +12,7 @@
     .all-contnet {
       display: flex;
       justify-content: space-between;
-      background-color: rgb(209, 207, 207);
+      background-color: rgba(243, 233, 233, 0.288);
       padding: 5px;
       padding-right: 10px;
       align-items: center;
@@ -38,6 +38,10 @@
           p {
             margin: 0px;
             // display: none;
+          }
+          .tirdsec{
+            display: flex;
+            gap: 20px;
           }
           .authname {
             font-size: 18px;

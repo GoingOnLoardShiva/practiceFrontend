@@ -103,7 +103,8 @@ const Header = () => {
           <a href="Services">Contact</a>
           {/* <a href="Services">Contact</a> */}
 
-          <Link to={"AdminPost"}>hiii</Link>
+          {/* <Link to={"AdminLogin"}>hiii</Link> */}
+          {/* <Link to="/admin/Postpage">Go to Post Page</Link> */}
         </div>
         <div className="timing">
           <p>{currentDate}</p>
