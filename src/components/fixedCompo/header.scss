@@ -112,14 +112,20 @@
     display: grid;
     justify-content: center;
     margin: auto;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding: 5px;
     .wethdetail {
       display: none;
     }
     .headercompo__logo {
       display: flex;
-      justify-content: space-between;
+      // justify-content: space-between;
+      gap: 30px;
+      img{
+        width: 30%;
+        height: 30px;
+        align-items: center;
+        padding-top: 15px;
+      }
       .timinga {
         display: block;
         padding-top: 10px;

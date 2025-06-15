@@ -15,7 +15,7 @@ const ContentPage = () => {
   const [rcData, setRcData] = useState([]);
   // const [viewsa, setViews] = useState();
   const formatDate = (date) => {
-    return moment(date).format("DD-MMMM-YYYY").toUpperCase();
+    return moment(date).format("DD MMMM   YYYY")
   };
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const ContentPage = () => {
                   </p>
                   <div className="tirdsec">
                     <p className="autdat">{formatDate(item.createdAt)}</p>
-                    <p className="autdat">Views:  {item.views}</p>
+                    <p className="autdat ">View  {item.views}</p>
                   </div>
                 </div>
               </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import axios from "axios";
 import "react-quill/dist/quill.snow.css";
-import "./main.scss";
+import "./mainpost.scss";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -95,9 +95,10 @@ const PostEditor = () => {
       id="qullcon"
       className="flex justify-center items-center min-h-screen bg-gray-50"
     >
-      <div className="w-full max-w-4xl mt-10 p-5 shadow-lg border rounded-xl bg-white">
+      <div id="qullconttent" className="w-full max-w-4xl mt-10 p-5 shadow-lg border rounded-xl bg-white">
         <h1 className="text-2xl font-bold mb-4 text-center">Create New Post</h1>
         <input
+          // id="titlein"
           className="w-full text-xl p-2 border-b mb-4 outline-none"
           placeholder="Enter post title"
           value={title}

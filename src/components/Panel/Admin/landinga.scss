@@ -15,6 +15,14 @@
     display: grid;
     gap: 30px;
     grid-template-columns: repeat(4, 1fr);
+    #maindiv{
+      text-decoration: none;
+    }
+    #maindiv:hover{
+      text-decoration: none;
+      scale: 0.5 !important;
+      // display: none;
+    }
 
     .landdiv {
       width: 250px;
@@ -26,7 +34,7 @@
 
         .author {
           color: black;
-          background-color: rgb(255, 255, 255);
+          background-color: rgb(235, 232, 232);
           border-radius: 20px;
           width: max-content;
           padding-left: 10px;
@@ -51,6 +59,7 @@
       .landingtext {
         font-size: 22px;
         font-weight: bold;
+        text-decoration: none;
       }
 
       .landingtext:hover {

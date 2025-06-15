@@ -48,6 +48,7 @@
           }
           .autdat {
             font-size: 10px;
+            // margin: 10px;
           }
         }
       }
@@ -70,6 +71,11 @@
       border-radius: 30px;
       width: 400px;
       margin: auto;
+    }
+    .ql-syntax{
+      background-color: black;
+      color: white;
+      padding: 10px;
     }
   }
 }

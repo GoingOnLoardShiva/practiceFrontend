@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import { Skeleton } from "@mui/material"; // Material UI Skeleton
-import "./landing.scss";
+import "./landinga.scss";
 
 const PostView = () => {
   const [posts, setPosts] = useState([]);
@@ -12,7 +12,7 @@ const PostView = () => {
   const key = process.env.REACT_APP_API;
 
   const formatDate = (date) => {
-    return moment(date).format("DD MMMM").toUpperCase();
+    return moment(date).format("DD MMMM");
   };
 
   useEffect(() => {
@@ -35,77 +35,83 @@ const PostView = () => {
       <div className="ladingcontent">
         {loading
           ? Array.from({ length: 8 }).map((_, index) => (
-              <div className="landdiv" key={index}>
-                <Skeleton
-                  variant="rectangular"
-                  width={250}
-                  height={150}
-                  style={{
-                    borderRadius: "8px",
-                    marginBottom: "10px",
-                    margin: "0px",
-                  }}
-                />
-                <Skeleton variant="text" width="80%" height={30} />
-                <div className="middlecontnet">
-                  <Skeleton variant="text" width="40%" />
-                  <Skeleton variant="text" width="30%" />
-                  <Skeleton variant="text" width="20%" />
-                </div>
-                <Skeleton variant="text" width="90%" />
-                <Skeleton variant="text" width="60%" />
+            <div className="landdiv" key={index}>
+              <Skeleton
+                variant="rectangular"
+                width={250}
+                height={150}
+                style={{
+                  borderRadius: "8px",
+                  marginBottom: "10px",
+                  margin: "0px",
+                }}
+              />
+              <Skeleton variant="text" width="80%" height={30} />
+              <div className="middlecontnet">
+                <Skeleton variant="text" width="40%" />
+                <Skeleton variant="text" width="30%" />
+                <Skeleton variant="text" width="20%" />
               </div>
-            ))
+              <Skeleton variant="text" width="90%" />
+              <Skeleton variant="text" width="60%" />
+            </div>
+          ))
           : posts.map((item) => {
-              const tempDiv = document.createElement("div");
-              tempDiv.innerHTML = item.content;
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = item.content;
 
-              const firstImg = tempDiv.querySelector("img")?.src;
-              const plainText = tempDiv.textContent || "";
-              const shortText =
-                plainText.length > 150
-                  ? plainText.slice(0, 150) + "..."
-                  : plainText;
+            const firstImg = tempDiv.querySelector("img")?.src;
+            const plainText = tempDiv.textContent || "";
+            const shortText =
+              plainText.length > 150
+                ? plainText.slice(0, 150) + "..."
+                : plainText;
 
-              return (
-                <div className="landdiv" key={item._id}>
-                  {firstImg && (
-                    <img
-                      src={firstImg}
-                      alt="Blog preview"
+            return (
+              <div className="div" key={item._id}>
+                <a id="maindiv" href={`/page/${encodeURIComponent(item._id)}`}>
+                  <div className="landdiv" >
+                    {firstImg && (
+                      <img
+                        src={firstImg}
+                        alt="Blog preview"
+                        style={{
+                          width: "250px",
+                          height: "150px",
+                          objectFit: "cover",
+                          borderRadius: "8px",
+                          marginBottom: "10px",
+                          margin: "0px",
+                        }}
+                      />
+                    )}
+                    <p className="landingtext">{item.title}</p>
+                    <div className="middlecontnet">
+                      <p className="author">
+                        {item.aurthor?.includes("@gmail.com")
+                          ? item.aurthor.split("@")[0]
+                          : item.aurthor}
+                      </p>
+                      <p className="author">{formatDate(item.createdAt)}</p>
+                      <p className="author pi pi-eye"> &nbsp;{item.views}</p>
+                    </div>
+                    <p
                       style={{
-                        width: "250px",
-                        height: "150px",
-                        objectFit: "cover",
-                        borderRadius: "8px",
-                        marginBottom: "10px",
-                        margin: "0px",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
                       }}
-                    />
-                  )}
-                  <p className="landingtext">{item.title}</p>
-                  <div className="middlecontnet">
-                    <p className="author">
-                      {item.aurthor?.includes("@gmail.com")
-                        ? item.aurthor.split("@")[0]
-                        : item.aurthor}
+                    >
+                      {shortText}
                     </p>
-                    <p className="author">{formatDate(item.createdAt)}</p>
-                    <p className="author pi pi-eye"> {item.views}</p>
+                    <a href={`/page/${encodeURIComponent(item._id)}`}>Read</a>
                   </div>
-                  <p
-                    style={{
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {shortText}
-                  </p>
-                  <a href={`/page/${encodeURIComponent(item._id)}`}>Read</a>
-                </div>
-              );
-            })}
+                </a>
+
+              </div>
+
+            );
+          })}
       </div>
     </div>
   );
