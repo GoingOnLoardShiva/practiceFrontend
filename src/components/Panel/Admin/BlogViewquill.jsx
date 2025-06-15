@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
-import { Skeleton } from "@mui/material"; // Material UI Skeleton
+import { Skeleton } from "@mui/material";
 import "./landinga.scss";
 
 const PostView = () => {
@@ -17,24 +17,41 @@ const PostView = () => {
 
   useEffect(() => {
     axios
-      .get(url + "/blogpostview", {
+      .get(`${url}/blogpostview`, {
         headers: { "access-key": key },
       })
       .then((res) => {
-        setPosts(res.data);
+        const data = res.data;
+
+        // Log response for debugging (can remove later)
+        console.log("API response:", data);
+
+        // If the API returns an array
+        if (Array.isArray(data)) {
+          setPosts(data);
+        }
+        // If the API returns an object with array in a key
+        else if (Array.isArray(data.posts)) {
+          setPosts(data.posts);
+        } else {
+          console.error("Invalid data format from API:", data);
+          setPosts([]); // fallback
+        }
+
         setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        console.error("Error fetching posts:", err);
         setLoading(false);
+        setPosts([]); // fallback
       });
-  }, []);
+  }, [url, key]);
 
   return (
     <div className="landingpage">
       <div className="ladingcontent">
-        {loading
-          ? Array.from({ length: 8 }).map((_, index) => (
+        {loading ? (
+          Array.from({ length: 8 }).map((_, index) => (
             <div className="landdiv" key={index}>
               <Skeleton
                 variant="rectangular"
@@ -56,7 +73,8 @@ const PostView = () => {
               <Skeleton variant="text" width="60%" />
             </div>
           ))
-          : posts.map((item) => {
+        ) : Array.isArray(posts) && posts.length > 0 ? (
+          posts.map((item) => {
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = item.content;
 
@@ -70,7 +88,7 @@ const PostView = () => {
             return (
               <div className="div" key={item._id}>
                 <a id="maindiv" href={`/page/${encodeURIComponent(item._id)}`}>
-                  <div className="landdiv" >
+                  <div className="landdiv">
                     {firstImg && (
                       <img
                         src={firstImg}
@@ -93,7 +111,7 @@ const PostView = () => {
                           : item.aurthor}
                       </p>
                       <p className="author">{formatDate(item.createdAt)}</p>
-                      <p className="author pi pi-eye"> &nbsp;{item.views}</p>
+                      <p className="author pi pi-eye">&nbsp;{item.views}</p>
                     </div>
                     <p
                       style={{
@@ -107,11 +125,12 @@ const PostView = () => {
                     <a href={`/page/${encodeURIComponent(item._id)}`}>Read</a>
                   </div>
                 </a>
-
               </div>
-
             );
-          })}
+          })
+        ) : (
+          <p>No posts found.</p>
+        )}
       </div>
     </div>
   );
